@@ -6,13 +6,48 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const { width } = Dimensions.get('window');
 
-const carouselData = [
-    { title: '1 Bedroom', color: '#3700FF' },
-    { title: '2 Bedroom', color: '#3700FF' },
-    { title: '3 Bedroom', color: '#3700FF' },
-    { title: '4 Bedroom', color: '#3700FF' },
-    { title: '5 Bedroom', color: '#3700FF' },
+const data = [
+    {   
+        title: 'Town center', 
+        borderColor: '#ccc', 
+        borderWidth: 1, 
+        borderRadius: 4, 
+        padding: 0,
+    },
+    { 
+        title: 'Chilenje', 
+        borderColor: '#ccc', 
+        borderWidth: 1, 
+        borderRadius: 4, 
+    },
+    { 
+        title: 'Mtendere', 
+        borderColor: '#ccc', 
+        borderWidth: 1, 
+        borderRadius: 4, 
+    },
+    { 
+        title: 'Kamwala S', 
+        borderColor: '#ccc', 
+        borderWidth: 1, 
+        borderRadius: 4, 
+    },
+    { 
+        title: 'Kabanana', 
+        borderColor: '#ccc', 
+        borderWidth: 1, 
+        borderRadius: 4,
+        padding: 0,
+    },
+    { 
+        title: 'Chelstone', 
+        borderColor: '#ccc', 
+        borderWidth: 1, 
+        borderRadius: 4,
+        padding: 0,
+    },
   ];
+
 
 function HomeNavigation() {
 
@@ -32,7 +67,7 @@ function HomeNavigation() {
                     onChangeText={text => setQuery(text)}
                     />
                     <View>
-                    <Ionicons name="filter-circle-outline" size={40} color="#8F8F8F" />
+                    <Ionicons name="filter-circle-outline" size={45} color="#ccc" />
                     </View>
                     </View>
                 </View>
@@ -47,17 +82,23 @@ function HomeNavigation() {
                     )}
                     scrollEventThrottle={16}
                     >
-                    {carouselData.map((item, index) => {
+                    {data.map((item, index) => {
                     return (
-                        <View style={[styles.card, { backgroundColor: item.color }]} key={index}>
+                        <View style={[styles.card, 
+                        {  
+                            borderColor: item.borderColor, 
+                            borderWidth: item.borderWidth, 
+                            borderRadius: item.borderRadius, 
+                            padding: item.padding,
+                        }]} key={index}>
                         <Text style={styles.text}>{item.title}</Text>
                         </View>
                     );
                     })}
                 </Animated.ScrollView>
                 </View>
-                
             </View>
+            <View style={styles.bottomNavigator}></View>
         </View>
     )
 }
@@ -66,7 +107,7 @@ export default HomeNavigation
 
 const styles = StyleSheet.create({
     container: {
-        padding: 10,
+        padding: 0,
         backgroundColor: '#f0f0f0',
         margin: 20,
         flexDirection: 'row',
@@ -74,7 +115,7 @@ const styles = StyleSheet.create({
     input: {
         marginRight: 10,
         height: 40,
-        width: 280,
+        width: 295,
         borderColor: '#ccc',
         borderWidth: 1,
         borderRadius: 8,
@@ -86,16 +127,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     card: {
-        width: width * 0.25,
-        marginHorizontal: width * 0.02,
-        height: 50,
+        width: width * 0.2,
+        marginHorizontal: width * 0.01,
+        height: 35,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15,
+        marginLeft: 20,
       },
       text: {
-        fontSize: 20,
-        color: '#fff',
+        fontSize: 16,
+        color: '#666',
         fontWeight: 'bold',
       },
       indicatorContainer: {
@@ -108,5 +150,10 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: '#888',
         marginHorizontal: 5,
+      },
+      bottomNavigator: {
+        borderBottomColor: '#ccc',
+        borderBottomWidth: 1,
+        marginTop: 20,
       },
 })

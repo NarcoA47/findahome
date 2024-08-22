@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import EvilIcons from '@expo/vector-icons/EvilIcons';
 
 const { width } = Dimensions.get('window');
 
@@ -12,34 +12,91 @@ function CardHomeComponent() {
         require('../../../assets/images/placeholders/home/2.jpg'),
         require('../../../assets/images/placeholders/home/1.jpg'),
       ];
-
-      const renderImage = ({ item }) => {
-        if (!item) {
-          console.error('Image item is undefined');
-          return null;
-        }
-        return <Image source={item} style={styles.image} />;
-      };
-
+ 
   return (
-    <View style={styles.card}>
-    <TouchableOpacity style={styles.reactionIcon}>
-      <FontAwesome name="heart" size={24} color="#fff" />
-    </TouchableOpacity>
-    <Carousel
-      data={images}
-      renderItem={renderImage}
-      sliderWidth={width}
-      itemWidth={width}
-      layout={'default'}
-      autoplay
-      autoplayInterval={3000}
-    />
-    <View style={styles.details}>
-      <Text style={styles.title}>Title of the Card</Text>
-      <Text style={styles.description}>This is a brief description of the card.</Text>
+    <ScrollView>
+      <View>
+      <View style={styles.card}>
+        <TouchableOpacity style={styles.reactionIcon}>
+          <FontAwesome name="heart" size={24} color="#fff" />
+        </TouchableOpacity>
+        <View style={styles.carouselController}>
+          <Image style={styles.image} 
+          source={require('../../../assets/images/placeholders/home/1.jpg')}/>
+        </View>
+        <View style={styles.details}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Kamwala South</Text>
+            <View style={styles.rating}>
+              <EvilIcons style={styles.ratingIcon} name="star" size={15} color="black" />
+              <Text style={styles.ratingText}>4.5</Text>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.description}>3 Bedroomed House</Text>
+            <Text style={styles.description}>27 - 28 Sept</Text>
+            <View style={styles.priceContainer}>
+              <Text style={styles.price}>K3500.00</Text><Text> /month</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      
+
+      <View style={styles.card}>
+        <TouchableOpacity style={styles.reactionIcon}>
+          <FontAwesome name="heart" size={24} color="#fff" />
+        </TouchableOpacity>
+        <View style={styles.carouselController}>
+          <Image style={styles.image} 
+          source={require('../../../assets/images/placeholders/home/2.jpg')}/>
+        </View>
+        <View style={styles.details}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Kamwala South</Text>
+            <View style={styles.rating}>
+              <EvilIcons style={styles.ratingIcon} name="star" size={15} color="black" />
+              <Text style={styles.ratingText}>4.5</Text>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.description}>3 Bedroomed House</Text>
+            <Text style={styles.description}>27 - 28 Sept</Text>
+            <View style={styles.priceContainer}>
+              <Text style={styles.price}>K3500.00</Text><Text> /month</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+
+
+      <View style={styles.card}>
+        <TouchableOpacity style={styles.reactionIcon}>
+          <FontAwesome name="heart" size={24} color="#fff" />
+        </TouchableOpacity>
+        <View style={styles.carouselController}>
+          <Image style={styles.image} 
+          source={require('../../../assets/images/placeholders/home/1.jpg')}/>
+        </View>
+        <View style={styles.details}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Kamwala South</Text>
+            <View style={styles.rating}>
+              <EvilIcons style={styles.ratingIcon} name="star" size={15} color="black" />
+              <Text style={styles.ratingText}>4.5</Text>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.description}>3 Bedroomed House</Text>
+            <Text style={styles.description}>27 - 28 Sept</Text>
+            <View style={styles.priceContainer}>
+              <Text style={styles.price}>K3500.00</Text><Text> /month</Text>
+            </View>
+          </View>
+        </View>
+      </View>
     </View>
-  </View>
+    </ScrollView>
   )
 }
 
@@ -56,6 +113,7 @@ const styles = StyleSheet.create({
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.3,
       shadowRadius: 4,
+      width: 350,
     },
     reactionIcon: {
       position: 'absolute',
@@ -64,10 +122,14 @@ const styles = StyleSheet.create({
       backgroundColor: 'rgba(0,0,0,0.5)',
       borderRadius: 20,
       padding: 5,
+      zIndex: 100,
+    },
+    carouselController: {
+      margin: 0,
     },
     image: {
-      width: width,
-      height: 200,
+      width: 350,
+      height: 400,
     },
     details: {
       padding: 15,
@@ -80,5 +142,26 @@ const styles = StyleSheet.create({
       fontSize: 14,
       color: '#666',
       marginTop: 5,
+    },
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+    },
+    rating: {
+      flexDirection: 'row',
+      // justifyContent: 'space-between'
+    },
+    ratingIcon: {
+      margin: 1,
+    },
+    ratingText: {
+      marginLeft: 4,
+    },
+    priceContainer: {
+      flexDirection: 'row',
+      marginTop: 10,
+    },
+    price: {
+      fontWeight: 'bold'
     },
   });
